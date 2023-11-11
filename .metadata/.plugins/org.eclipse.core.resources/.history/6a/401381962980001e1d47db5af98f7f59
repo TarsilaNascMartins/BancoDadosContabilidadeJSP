@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Ganho lista</title>
+</head>
+<body>
+<br>
+<a href="GanhoNovo">Criar um novo Ganho</a>
+</br>
+<table border="1">
+<tr>
+<th>ID</th>
+<th>Nome</th>
+<th>Descrição</th>
+</tr>
+<th>01</th>
+<th>Tarsila</th>
+<th>Descrição Nova</th>
+<tr>
+</tr>
+</table>
+
+
+
+</body>
+</html>

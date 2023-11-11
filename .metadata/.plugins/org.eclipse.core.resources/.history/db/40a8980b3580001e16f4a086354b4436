@@ -1,0 +1,70 @@
+package br.com.fiap.mercado.view.dao;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+
+
+public class GanhoDAOnovo {
+	
+    private List<ProdutoModel> produtos;
+
+    public ProdutoDAO() {
+        produtos = new ArrayList<>();
+
+        for (int i = 1; i <= 10; i++) {
+            String imagemId = UUID.randomUUID().toString(); // Gerando um ID único para cada imagem
+            String imagemUrl = "https://via.placeholder.com/35?text=Produto" + i + "&id=" + imagemId;
+            
+            produtos.add(new ProdutoModel(i, "Produto " + i, imagemUrl, true, "Descrição do Produto " + i, "Sugestão de Troca " + i, 10.0 * i, new Date(), new Date(), i));
+        }
+        
+        for (int i = 1; i <= 10; i++) {
+            String imagemId = UUID.randomUUID().toString(); // Gerando um ID único para cada imagem
+            String imagemUrl = "https://via.placeholder.com/35?text=Produto" + i + "&id=" + imagemId;
+            produtos.add(new ProdutoModel(i, "Produto " + (i+10), imagemUrl, true, "Descrição do Produto " + (i+10), "Sugestão de Troca " + i, 10.0 * i, new Date(), new Date(), i));
+        }
+        
+    }
+
+    // Listar todos os produtos
+    public List<ProdutoModel> listarProdutos() {
+        return produtos;
+    }
+
+    // Buscar um produto por ID
+    public ProdutoModel buscarProdutoPorId(int produtoId) {
+        for (ProdutoModel produto : produtos) {
+            if (produto.getProdutoId() == produtoId) {
+                return produto;
+            }
+        }
+        return null;
+    }
+
+    // Inserir um novo produto
+    public void inserirProduto(ProdutoModel produto) {
+        int novoId = produtos.size() + 1;
+        produto.setProdutoId(novoId);
+        produtos.add(produto);
+        
+        System.out.println("Produto inserido com sucesso: " + produto);
+    }
+
+    // Atualizar um produto existente
+    public void atualizarProduto(ProdutoModel produto) {
+        for (int i = 0; i < produtos.size(); i++) {
+            if (produtos.get(i).getProdutoId() == produto.getProdutoId()) {
+                produtos.set(i, produto);
+                return;
+            }
+        }
+    }
+
+    // Excluir um produto por ID
+    public void excluirProduto(int produtoId) {
+        produtos.removeIf(produto -> produto.getProdutoId() == produtoId);
+    }
+
+}
